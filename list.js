@@ -26,12 +26,13 @@ const foldr = (f, b, a) => {
 
 	const xs = a.slice(0, -1);
 	const x = a.pop();
+	// wish you could go [...xs, x] = a, but no go es6,
 
 	return foldr(f, f(x, b), xs);
 }
 
 const filter1 = (f, [x, ...xs]) => {
-	// eh, what if undefined is in collection?
+	// eh, what if undefined is in collection? isEmpty() is nicer I think
 	if (x === undefined) return [];
 
 	return f(x) ? [x, ...filter(f, xs)] : filter(f, xs);
@@ -118,7 +119,7 @@ const interleave = (a, b) => {
 }
 
 // Other stuffs
-const even = (a) => filter(x => x % 2 === 0, a);
+const even = a => filter(x => x % 2 === 0, a);
 
 const quicksort = a => {
 	if (isEmpty(a)) return [];

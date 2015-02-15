@@ -7,11 +7,11 @@ const cdr = a => a[1];
 const list = (...a) => foldr(cons, null, a);
 
 const str = a => {
-	const piter = b => {
-		if (!b) return;
-		return [car(b)].concat(piter(cdr(b)));
+	const iter = (b, out) => {
+		if (!b) return out;
+		return iter(cdr(b), [...out, car(b)]);
 	}
-	return piter(a).slice(0,-1).join(",");
+	return iter(a, []).join(",");
 }
 
 const idx = (a, n) => {
