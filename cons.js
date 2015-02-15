@@ -14,9 +14,9 @@ const str = a => {
 	return piter(a).slice(0,-1).join(",");
 }
 
-const ref = (a, n) => {
+const idx = (a, n) => {
 	if (n === 0) return car(a);
-	return ref(cdr(a), n - 1);
+	return idx(cdr(a), n - 1);
 }
 
 const len = a => {
@@ -55,8 +55,3 @@ const mapl = (f, a) => {
 		mapl(f, cdr(a))
 	);
 }
-
-
-
-
-

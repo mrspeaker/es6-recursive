@@ -23,16 +23,16 @@ const foldl = (f, a, b) => {
 
 const foldr = (f, b, a) => {
 	if (isEmpty(a)) return b;
-	const xsx = a => [a.slice(0, -1), a[a.length - 1]]; // Erm;
-	const [xs, x] = xsx(a);
+
+	const xs = a.slice(0, -1);
+	const x = a.pop();
 
 	return foldr(f, f(x, b), xs);
 }
 
-const filter1 = (f, a) => {
-	const [x, ...xs] = a;
-	console.log("***** errrm1", x, xs);
-	if (isEmpty(a)) return [];
+const filter1 = (f, [x, ...xs]) => {
+	// eh, what if undefined is in collection?
+	if (x === undefined) return [];
 
 	return f(x) ? [x, ...filter(f, xs)] : filter(f, xs);
 }
