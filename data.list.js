@@ -1,10 +1,9 @@
 // Helpers
-const isEmpty = a => a.length === 0,
-	isEmpties = (...a) => any(isEmpty, a);
+const isEmpty = a => a.length === 0;
+const isEmpties = (...a) => any(isEmpty, a);
 
 // HOF
 const compose = (f, g) => x => f(g(x));
-
 const flip = f => (a, b) => f(b, a);
 
 // Collections
@@ -31,8 +30,9 @@ const foldr = (f, b, a) => {
 }
 
 const filter1 = (f, a) => {
-	if (isEmpty(a)) return [];
 	const [x, ...xs] = a;
+	console.log("***** errrm1", x, xs);
+	if (isEmpty(a)) return [];
 
 	return f(x) ? [x, ...filter(f, xs)] : filter(f, xs);
 }
@@ -57,14 +57,14 @@ const all = (f, a) => {
 	return isEmpty(xs) ? true : all(f, xs);
 }
 
-const reverse1 = (a) => {
+const reverse1 = a => {
 	if (isEmpty(a)) return [];
 	const [x, ...xs] = a;
 
 	return [...reverse(xs), ...[x]];
 }
 
-const reverse = (a) => foldr((x, acc) => {
+const reverse = a => foldr((x, acc) => {
 	acc.push(x);
 	return acc;
 }, [], a);
@@ -94,16 +94,16 @@ const takeWhile = (f, a) => {
 
 const zip = (a, b) => {
 	if (isEmpties(a, b)) return [];
-	const [x, ...xs] = a,
-		[y, ...ys] = b;
+	const [x, ...xs] = a;
+	const [y, ...ys] = b;
 
 	return [[x, y], ...zip(xs, ys)];
 }
 
 const zipWith = (f, a, b) => {
 	if (isEmpties(a, b)) return [];
-	const [x, ...xs] = a,
-		[y, ...ys] = b;
+	const [x, ...xs] = a;
+	const [y, ...ys] = b;
 
 	return [f(x, y), ...zipWith(f, xs, ys)];
 }
@@ -118,14 +118,14 @@ const interleave = (a, b) => {
 }
 
 // Other stuffs
-const even = (a) => filter((x) => x % 2 === 0, a);
+const even = (a) => filter(x => x % 2 === 0, a);
 
-const quicksort = (a) => {
+const quicksort = a => {
 	if (isEmpty(a)) return [];
 
-	const [x, ...xs] = a,
-		larger = filter((a) => a >= x, xs),
-		smaller = filter((a) => a < x, xs);
+	const [x, ...xs] = a;
+	const larger = filter(a => a >= x, xs);
+	const smaller = filter(a => a < x, xs);
 
 	return [...quicksort(smaller), x, ...quicksort(larger)];
 }

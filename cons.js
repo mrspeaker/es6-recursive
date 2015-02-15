@@ -1,13 +1,13 @@
 
 // Implementation of SICP lists
 
-const cons = (car, cdr) => [car, cdr],
-	car = (a) => a[0],
-	cdr = (a) => a[1],
-	list = (...a) => foldr(cons, null, a);
+const cons = (car, cdr) => [car, cdr];
+const car = a => a[0];
+const cdr = a => a[1];
+const list = (...a) => foldr(cons, null, a);
 
-const str = (a) => {
-	const piter = (b) => {
+const str = a => {
+	const piter = b => {
 		if (!b) return;
 		return [car(b)].concat(piter(cdr(b)));
 	}
@@ -19,7 +19,7 @@ const ref = (a, n) => {
 	return ref(cdr(a), n - 1);
 }
 
-const len = (a) => {
+const len = a => {
 	if (!a) return 0;
 	return 1 + len(cdr(a));
 }
@@ -29,12 +29,12 @@ const append = (a, b) => {
 	return cons(car(a), append(cdr(a), b));
 }
 
-const last = (a) => {
+const last = a => {
 	if (!cdr(a)) return car(a);
 	return last(cdr(a));
 }
 
-const rev = (a) => {
+const rev = a => {
 	if (!a) return null;
 	const h = car(a);
 	const t = cdr(a);
@@ -54,10 +54,6 @@ const mapl = (f, a) => {
 		list(f(car(a))),
 		mapl(f, cdr(a))
 	);
-}
-
-const toArray = (a) => {
-	toArray()
 }
 
 
