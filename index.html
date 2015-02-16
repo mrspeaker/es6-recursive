@@ -3,6 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Func js in ES6</title>
+  <style>
+  #dbg > span {
+    font-weight: bold;
+  }
+  </style>
 </head>
 <body>
 
@@ -10,8 +15,15 @@
 	Bunch of functional-style recursive javascript using the new ES6 features. Output in console.
 </p>
 
+<div id="dbg"></div>
+
 <script>
-	const lg = (name, ...a) => console.log(name, a.length === 1 ? a[0] : a);
+  const dbg = document.querySelector("#dbg");
+  const lg = (name, ...a) => {
+    // console.log(name, a.length === 1 ? a[0] : a);
+    dbg.innerHTML += "<span>" + name + "</span>" + (a.length === 1 ? a[0] : a) + "<br/>";
+  }
+	const assert = (test, msg) => console.assert(test, msg);
 </script>
 <script src="list.js"></script>
 <script src="cons.js"></script>
