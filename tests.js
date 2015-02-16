@@ -21,11 +21,21 @@ lg("append:", str(append(oneToFour, fiveToMore)));
   // Index test
   const fourth = idx(oneToFour, 3);
   lg("idx:", fourth);
-  console.assert(fourth === 4, "Incorrect fetch by index");
+  console.assert(fourth === 4, "Fourth element should be 4");
 }
 
-lg("len:", len(oneToFour));
-lg("last:", last(fiveToMore));
+{
+  const ln = len(oneToFour);
+  lg("len:", ln);
+  console.assert(ln === 4, "Length should be 4");
+}
+
+{
+  const lst = last(fiveToMore);
+  lg("last:", lst);
+  console.assert(lst === 8, "Last element should be 8");
+}
+
 lg("reverse:", str(rev(fiveToMore)));
 
 lg("map:", str(mapl(x => x * x, lots)));

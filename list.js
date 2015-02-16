@@ -24,9 +24,9 @@ const foldl = (f, a, b) => {
 const foldr = (f, b, a) => {
 	if (isEmpty(a)) return b;
 
+	// wish you could go [...xs, x] = a, but no go es6,
 	const xs = a.slice(0, -1);
 	const x = a.pop();
-	// wish you could go [...xs, x] = a, but no go es6,
 
 	return foldr(f, f(x, b), xs);
 }
@@ -119,12 +119,12 @@ const interleave = (a, b) => {
 }
 
 // Other stuffs
-const even = a => filter(x => x % 2 === 0, a);
+const even = list => filter(x => x % 2 === 0, list);
 
-const quicksort = a => {
-	if (isEmpty(a)) return [];
+const quicksort = list => {
+	if (isEmpty(list)) return [];
 
-	const [x, ...xs] = a;
+	const [x, ...xs] = list;
 	const larger = filter(a => a >= x, xs);
 	const smaller = filter(a => a < x, xs);
 
