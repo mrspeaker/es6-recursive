@@ -1,4 +1,4 @@
-console.log("****** Cons list funcs ******");
+lg("****** Cons list funcs ******");
 
 const conslist = cons(1, cons(2, cons(3, cons(4, null))));
 const oneToFour = list(1,2,3,4);
@@ -44,7 +44,7 @@ const desc = [1,2,3,4,5,6,7,8,9,10];
 const asc = reverse(desc);
 const letters = "abcdefg".slice("");
 
-console.log("****** Arrays: recursive funcs ******");
+lg("<br/>****** Arrays: recursive funcs ******");
 
 lg( "map:", map(a => a * a, desc) );
 lg( "filter:", filter1(a => a < 3 || a > 8, desc) );

@@ -4,8 +4,12 @@
 	<meta charset="utf-8" />
 	<title>Func js in ES6</title>
   <style>
+  body {
+    font-family: helvetica, arial, sans-serif;
+  }
   #dbg > span {
     font-weight: bold;
+    line-height: 1.4em;
   }
   </style>
 </head>
@@ -21,7 +25,7 @@
   const dbg = document.querySelector("#dbg");
   const lg = (name, ...a) => {
     // console.log(name, a.length === 1 ? a[0] : a);
-    dbg.innerHTML += "<span>" + name + "</span>" + (a.length === 1 ? a[0] : a) + "<br/>";
+    dbg.innerHTML += "<span>" + name + "</span> " + (a.length === 1 ? a[0] : a) + "<br/>";
   }
 	const assert = (test, msg) => console.assert(test, msg);
 </script>

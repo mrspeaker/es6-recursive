@@ -1,4 +1,3 @@
-
 // Implementation of SICP lists
 
 const cons = (car, cdr) => [car, cdr];
