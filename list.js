@@ -31,9 +31,9 @@ const foldr = (f, b, a) => {
 	return foldr(f, f(x, b), xs);
 }
 
-const filter1 = (f, [x, ...xs]) => {
-	// eh, what if undefined is in collection? isEmpty() is nicer I think
-	if (x === undefined) return [];
+const filter1 = (f, a) => {
+	const [x, ...xs] = a
+	if (isEmpty(a)) return [];
 
 	return f(x) ? [x, ...filter(f, xs)] : filter(f, xs);
 }
